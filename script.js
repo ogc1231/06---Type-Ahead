@@ -5,4 +5,11 @@ const cities = [];
 
 fetch(endpoint)
   .then((rawData) => rawData.json())
-  .then((data) => console.log(data));
+  .then((data) => cities.push(...data));
+
+function findCityOrState(wordToMatch, cities) {
+  return cities.filter((place) => {
+    const regex = new RegExp(wordToMatch, "gi");
+    return place.city.match(regex) || place.state.match(regex);
+  });
+}
