@@ -15,7 +15,17 @@ function findCityOrState(wordToMatch, cities) {
 }
 
 function displayMatches() {
-  console.log(this.value);
+  const matchArray = findCityOrState(this.value, cities);
+  const html = matchArray
+    .map((place) => {
+      return `
+    <li>
+      <span class="name">${place.city}, ${place.state}</span>
+      <span class="population">${place.population}</span>
+    </li>`;
+    })
+    .join("");
+  suggestions.innerHTML = html;
 }
 
 const searchBarInput = document.querySelector(".search");
