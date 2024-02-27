@@ -38,11 +38,17 @@ function displayMatches() {
     </li>`;
     })
     .join("");
-  suggestions.innerHTML = html;
+  if (searchBarInput.value === "") {
+    suggestions.innerHTML = `<li>Filter for a city</li><li>or a state</li>`;
+  } else if (html === "") {
+    suggestions.innerHTML = `<li>No results found</li>`;
+  } else {
+    suggestions.innerHTML = html;
+  }
 }
 
 const searchBarInput = document.querySelector(".search");
 const suggestions = document.querySelector(".suggestions");
 
 searchBarInput.addEventListener("change", displayMatches);
-searchBarInput.addEventListener("keyup", displayMatches);
+searchBarInput.addEventListener("input", displayMatches);
