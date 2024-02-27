@@ -13,3 +13,13 @@ function findCityOrState(wordToMatch, cities) {
     return place.city.match(regex) || place.state.match(regex);
   });
 }
+
+function displayMatches() {
+  console.log(this.value);
+}
+
+const searchBarInput = document.querySelector(".search");
+const suggestions = document.querySelector(".suggestions");
+
+searchBarInput.addEventListener("change", displayMatches);
+searchBarInput.addEventListener("keyup", displayMatches);
